@@ -1,0 +1,13 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "useBuiltIns": "entry", // tell the browser to use its native features else polyfill ==> reduces size of bundle
+        "targets": { "browsers": ["last 2 versions", "not ie 11"] }
+      }
+    ], // transform next gen js to es5
+    "@babel/react" // transform jsx to react createElement calls
+  ],
+  "plugins": ["@babel/proposal-class-properties"] // transfrm class properties syntax ex: handleClick
+}

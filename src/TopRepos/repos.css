@@ -1,0 +1,14 @@
+#user-repos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+.repo-footer {
+  display: flex;
+  justify-content: space-between;
+}
+.repo-card {
+  padding: 10px;
+}

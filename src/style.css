@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box !important;
+}
+.container {
+  max-width: 1800px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/*Grid */
+.user-info {
+  grid-area: userInfo;
+}
+.chart1 {
+  grid-area: chart1;
+}
+.chart2 {
+  grid-area: chart2;
+}
+.chart3 {
+  grid-area: chart3;
+}
+
+.user-charts {
+  display: grid;
+  grid-template-areas:
+    "userInfo chart1 chart3"
+    "userInfo chart1 chart3";
+  grid-gap: 20px;
+}
+#most-starred-chart,
+#top-languages-chart {
+  max-width: 700px;
+}
+.chart-container {
+  text-align: center;
+}

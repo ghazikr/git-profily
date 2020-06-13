@@ -12,19 +12,22 @@ export default function TopLanguagesChart({ data }) {
       labels: data.map((elem) => elem.name),
       legend: {
         position: "bottom",
+        show: true,
       },
     },
   };
   return (
-    <div className="chart-container">
+    <div className="top-languages-card chart-card card">
       <h3>Top used languages</h3>
-      <ReactApexChart
-        options={state.options}
-        series={state.series}
-        type="pie"
-        width="100%"
-        // title="jajaj"
-      />
+      <div className="chart-container" style={{ marginTop: "150px" }}>
+        <ReactApexChart
+          options={state.options}
+          series={state.series}
+          type="pie"
+          width="100%"
+          height="350px"
+        />
+      </div>
     </div>
   );
 }

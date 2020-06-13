@@ -1,20 +1,40 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faCode } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faCodeBranch } from "@fortawesome/free-solid-svg-icons";
 
-export default function RepoCard({ name, description, value, language }) {
+export default function RepoCard({
+  name,
+  description,
+  value,
+  language,
+  forks = 40,
+}) {
   return (
     <li className="repo-card">
-      <h3>{name}</h3>
-      <p>{description}</p>
-      <div className="repo-footer">
-        <span>
-          <FontAwesomeIcon icon={faStar} />
-          {value}
-        </span>
-        <span>
-          <FontAwesomeIcon icon={faCode} /> {language}
-        </span>
+      <div className="left">
+        <span>{name}</span>
+        <p>{description}</p>
+      </div>
+      <div className="right">
+        <span className="language-tag">{language}</span>
+        <div className="repo-stats">
+          <span style={{ marginRight: "5px" }}>
+            <FontAwesomeIcon
+              icon={faCodeBranch}
+              color="#CECFD0"
+              style={{ marginRight: "2px" }}
+            />
+            {forks}
+          </span>
+          <span>
+            <FontAwesomeIcon
+              icon={faStar}
+              color="#CECFD0"
+              style={{ marginRight: "2px" }}
+            />
+            {value}
+          </span>
+        </div>
       </div>
     </li>
   );

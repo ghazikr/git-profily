@@ -10,5 +10,25 @@
   justify-content: space-between;
 }
 .repo-card {
-  padding: 10px;
+  padding: 20px;
+  display: flex;
+  box-shadow: 5px 5px 12px #00000030;
+  background: #ffffff;
+}
+.repo-card .left {
+  flex: 1;
+}
+.repo-card .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.language-tag {
+  background: #4ad991;
+  width: 100%;
+  text-align: center;
+}
+.repo-stats {
+  color: #cecfd0;
 }

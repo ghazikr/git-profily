@@ -1,5 +1,9 @@
 * {
   box-sizing: border-box !important;
+  margin: 0;
+}
+body {
+  background: #f0f0f7;
 }
 .container {
   max-width: 1800px;
@@ -12,27 +16,43 @@
 .user-info {
   grid-area: userInfo;
 }
-.chart1 {
-  grid-area: chart1;
+.most-starred-card {
+  grid-area: most-starred-card;
 }
 .chart2 {
   grid-area: chart2;
 }
-.chart3 {
-  grid-area: chart3;
+.top-languages-card {
+  grid-area: top-languages-card;
 }
 
 .user-charts {
   display: grid;
-  grid-template-areas:
-    "userInfo chart1 chart3"
-    "userInfo chart1 chart3";
-  grid-gap: 20px;
+  grid-template-areas: "userInfo most-starred-card most-starred-card top-languages-card";
+  grid-column-gap: 20px;
+  grid-template-rows: 750px;
+  padding-top: 80px;
+}
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+.card-info-body {
+  flex: 1;
 }
 #most-starred-chart,
 #top-languages-chart {
   max-width: 700px;
 }
 .chart-container {
-  text-align: center;
+  flex-grow: 1;
+}
+.chart-card {
+  display: flex;
+  flex-direction: column;
+}
+.card {
+  box-shadow: 5px 5px 12px #00000030;
+  background: #ffffff;
+  position: relative;
 }

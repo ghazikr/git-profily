@@ -1,0 +1,21 @@
+.row-stat {
+  display: flex;
+  justify-content: space-around;
+}
+.stats-footer {
+  display: flex;
+  padding: 20px;
+  border-top: 1px solid #dedede;
+}
+.card-info-body {
+  padding: 90px 50px 0 50px;
+}
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+.stat-box svg {
+  margin-bottom: 5px;
+}

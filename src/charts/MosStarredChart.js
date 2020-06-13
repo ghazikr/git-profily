@@ -6,6 +6,12 @@ export default function MostStarredChart({ data }) {
     options: {
       chart: {
         id: "most-starred-chart",
+        toolbar: {
+          show: false,
+          tools: {
+            download: false,
+          },
+        },
       },
       xaxis: {
         categories: data.map((elem) => elem.name),
@@ -31,14 +37,17 @@ export default function MostStarredChart({ data }) {
   };
 
   return (
-    <div className="chart-container">
+    <div className="most-starred-card chart-card card">
       <h3>Most starred repos</h3>
-      <ReactApexChart
-        options={state.options}
-        series={state.series}
-        type="bar"
-        width="100%"
-      />
+      <div className="chart-container">
+        <ReactApexChart
+          options={state.options}
+          series={state.series}
+          type="bar"
+          width="100%"
+          height="700px"
+        />
+      </div>
     </div>
   );
 }

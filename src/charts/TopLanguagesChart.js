@@ -18,7 +18,7 @@ export default function TopLanguagesChart({ data }) {
   };
   return (
     <div className="top-languages-card chart-card card">
-      <h3>Top used languages</h3>
+      <h3 className="chart-header">Top used languages</h3>
       <div className="chart-container" style={{ marginTop: "150px" }}>
         <ReactApexChart
           options={state.options}

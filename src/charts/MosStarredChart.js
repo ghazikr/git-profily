@@ -38,7 +38,7 @@ export default function MostStarredChart({ data }) {
 
   return (
     <div className="most-starred-card chart-card card">
-      <h3>Most starred repos</h3>
+      <h3 className="chart-header">Most starred repos</h3>
       <div className="chart-container">
         <ReactApexChart
           options={state.options}

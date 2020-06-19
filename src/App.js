@@ -4,7 +4,7 @@ import UserProfile from "./UserProfile";
 export default class App extends Component {
   render() {
     return (
-      <div className="container">
+      <div id="container">
         <UserProfile />
       </div>
     );

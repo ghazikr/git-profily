@@ -7,6 +7,7 @@ import {
   faMapMarkedAlt,
   faCalendarWeek,
 } from "@fortawesome/free-solid-svg-icons";
+const ICON_COLOR = "#8C8B9C";
 const formatDate = (date) => {
   const dateObj = new Date(date);
   return `${dateObj.getDate()}-${dateObj.getMonth()}-${dateObj.getFullYear()}`;
@@ -48,8 +49,8 @@ export default function UserInfo({ data }) {
           className="name-info"
           style={{ textAlign: "center", marginBottom: "40px" }}
         >
-          <h2>{data.name}</h2>
-          <span>@{data.login}</span>
+          <h2 id="user-name">{data.name}</h2>
+          <span id="user-login-name">@{data.login}</span>
         </div>
         <div className="info-stats">
           {[
@@ -76,8 +77,8 @@ export default function UserInfo({ data }) {
                   style={{ width: "22px", height: "25px", margin: "auto" }}
                 />
               </span>
-              <span>{name}</span>
-              <span>{count}</span>
+              <span className="stat-item-name">{name}</span>
+              <span className="stat-item-nb">{count}</span>
             </div>
           ))}
         </div>
@@ -85,15 +86,16 @@ export default function UserInfo({ data }) {
 
       <div className="stats-footer">
         <div className="stat-box">
-          <FontAwesomeIcon icon={faBriefcase} color="#CECFD0" />@{data.company}
+          <FontAwesomeIcon icon={faBriefcase} color={ICON_COLOR} />
+          <span className="label-stat-box">@{data.company}</span>
         </div>
         <div className="stat-box">
-          <FontAwesomeIcon icon={faMapMarkedAlt} color="#CECFD0" />
-          {data.location}
+          <FontAwesomeIcon icon={faMapMarkedAlt} color={ICON_COLOR} />
+          <span className="label-stat-box">{data.location}</span>
         </div>
         <div className="stat-box">
-          <FontAwesomeIcon icon={faCalendarWeek} color="#CECFD0" />
-          <span> {formatDate(data.created_at)}</span>
+          <FontAwesomeIcon icon={faCalendarWeek} color={ICON_COLOR} />
+          <span className="label-stat-box">{formatDate(data.created_at)}</span>
         </div>
       </div>
     </section>

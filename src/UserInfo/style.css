@@ -19,3 +19,26 @@
 .stat-box svg {
   margin-bottom: 5px;
 }
+.label-stat-box {
+  font-size: 16px;
+  color: #4d4f5c;
+  opacity: 50%;
+}
+#user-name {
+  color: #4d4f5c;
+}
+#user-login-name {
+  color: #43425d;
+  opacity: 50%;
+}
+.stat-item-name {
+  color: #43425d;
+  font-size: 20px;
+}
+.stat-item-nb {
+  color: #4d4f5c;
+  opacity: 50%;
+}
+.section-header {
+  color: #4d4f5c;
+}

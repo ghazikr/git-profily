@@ -9,6 +9,10 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: ["file-loader"],
+      },
     ],
   },
   plugins: [new HtmlWebpackPlugin({ template: "index.html" })],

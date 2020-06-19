@@ -25,9 +25,12 @@
   align-items: flex-end;
 }
 .language-tag {
-  background: #4ad991;
+  background: #c8f4de;
   width: 100%;
   text-align: center;
+  border-radius: 14px;
+  padding: 4px;
+  color: #647a6f;
 }
 .repo-stats {
   color: #cecfd0;

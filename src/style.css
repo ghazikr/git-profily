@@ -4,9 +4,11 @@
 }
 body {
   background: #f0f0f7;
+  font-family: "Source Sans Pro";
 }
-.container {
-  max-width: 1800px;
+#container {
+  width: 90%;
+  max-width: 1100px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -50,9 +52,32 @@ body {
 .chart-card {
   display: flex;
   flex-direction: column;
+  padding: 30px;
 }
 .card {
   box-shadow: 5px 5px 12px #00000030;
   background: #ffffff;
   position: relative;
+}
+
+/* media queries */
+@media (max-width: 960px) {
+  .user-charts {
+    display: grid;
+    grid-template-areas:
+      "userInfo userInfo userInfo "
+      "most-starred-card most-starred-card most-starred-card "
+      "top-languages-card top-languages-card top-languages-card";
+    grid-row-gap: 20px;
+  }
+}
+
+/* fonts */
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("assets/fonts/SourceSansPro-Regular.ttf") format("truetype");
+}
+
+.chart-header {
+  color: #4d4f5c;
 }

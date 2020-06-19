@@ -579,7 +579,7 @@ const data = [
 
 export default function FollowersGraph() {
   const username = "Napolean";
-  const HEIGHT = 800;
+  const HEIGHT = 1000;
   const BASIC_R = 40;
 
   const ref = useRef(null);
@@ -646,8 +646,8 @@ export default function FollowersGraph() {
             return 300;
           })
       )
-      .force("charge", d3.forceManyBody())
-      .force("center", d3.forceCenter(1100 / 2, HEIGHT / 2));
+      .force("charge", d3.forceManyBody());
+    // .force("center", d3.forceCenter(1100 / 2, HEIGHT / 2));
 
     const svg = d3.select(ref.current);
 
@@ -706,11 +706,21 @@ export default function FollowersGraph() {
         return "translate(" + d.x + "," + d.y + ")";
       });
     });
+    resize();
+    d3.select(window).on("resize", resize);
+    function resize() {
+      const width = document.getElementById("container").offsetWidth;
+      const height = document.getElementById("container").offsetHeight;
+      svg.attr("width", width);
+      simulation.force("center", d3.forceCenter(width / 2, HEIGHT / 2));
+      // simulation.size([width, height]).resume();
+    }
   }, []);
 
   return (
-    <section id="followers">
-      <svg ref={ref} height={HEIGHT} width="100%"></svg>
+    <section id="followers" style={{ height: "900px" }}>
+      <h1 className="section-header">Top Followers</h1>
+      <svg ref={ref} height="100%" width="100%"></svg>
     </section>
   );
 }

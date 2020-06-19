@@ -4,8 +4,8 @@ import "./repos.css";
 import RepoCard from "./RepoCard";
 export default function UserRepos({ data }) {
   return (
-    <section>
-      <h1 className="section-header">Top Repos</h1>
+    <section className="section-card">
+      <h1>Top Repos</h1>
       <ul id="user-repos">
         {data.map(({ name, value, language, description }) => (
           <RepoCard

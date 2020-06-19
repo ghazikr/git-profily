@@ -23,6 +23,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
+  padding-left: 5px;
 }
 .language-tag {
   background: #c8f4de;
@@ -34,4 +35,7 @@
 }
 .repo-stats {
   color: #cecfd0;
+}
+.repo-card .left h2 {
+  color: #707070;
 }

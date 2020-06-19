@@ -806,7 +806,6 @@ export default function UserProfile() {
     fetch(`https://api.github.com/users/${username}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setUserInfo(data);
       })
       .catch((error) => {});
@@ -815,9 +814,7 @@ export default function UserProfile() {
   const getRepoData = () => {
     fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
+      .then((data) => {})
       .catch((error) => {});
   };
 
@@ -828,7 +825,6 @@ export default function UserProfile() {
       new Set(reposData.map((elem) => elem.language).filter((lang) => lang))
     );
     const userOrgiginalRepos = reposData.filter((repo) => repo.fork === false);
-    console.log(userOrgiginalRepos);
 
     const languagesCountObj = languagesArray.map((language) => {
       const languageCountPerLang = userOrgiginalRepos.filter(
@@ -848,7 +844,6 @@ export default function UserProfile() {
       .sort(sortDes)
       .slice(0, 5);
     setMostStarredReposData(mostStarredRepos);
-    console.log(userOrgiginalRepos);
 
     const repData = userOrgiginalRepos
       .map(({ name, stargazers_count, language, description }) => ({

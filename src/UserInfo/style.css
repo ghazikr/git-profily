@@ -8,7 +8,10 @@
   border-top: 1px solid #dedede;
 }
 .card-info-body {
-  padding: 90px 50px 0 50px;
+  padding-top: 90px;
+  width: 80%;
+  margin: auto;
+  z-index: 1;
 }
 .stat-box {
   display: flex;
@@ -20,7 +23,6 @@
   margin-bottom: 5px;
 }
 .label-stat-box {
-  font-size: 16px;
   color: #4d4f5c;
   opacity: 50%;
 }
@@ -34,11 +36,31 @@
 .stat-item-name {
   color: #43425d;
   font-size: 20px;
+  flex: 1;
 }
 .stat-item-nb {
   color: #4d4f5c;
   opacity: 50%;
 }
-.section-header {
-  color: #4d4f5c;
+
+.row-stat .icon-container {
+  min-width: 118px;
+}
+
+.info-stats ul {
+  padding: 0;
+}
+.user-info-header {
+  height: 160px;
+  width: 100%;
+  background: #43425d;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#user-img {
+  border-radius: 100%;
+  max-width: 100%;
+  display: flex;
+  margin: 0 auto;
 }

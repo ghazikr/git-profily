@@ -12,7 +12,7 @@ export default function RepoCard({
   return (
     <li className="repo-card">
       <div className="left">
-        <span>{name}</span>
+        <h2>{name}</h2>
         <p>{description}</p>
       </div>
       <div className="right">

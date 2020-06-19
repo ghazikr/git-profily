@@ -579,7 +579,7 @@ const data = [
 
 export default function FollowersGraph() {
   const username = "Napolean";
-  const HEIGHT = 1000;
+  const HEIGHT = 700;
   const BASIC_R = 40;
 
   const ref = useRef(null);
@@ -632,8 +632,6 @@ export default function FollowersGraph() {
       .force(
         "collide",
         d3.forceCollide().radius(function (d) {
-          console.log(d);
-
           return BASIC_R + 5;
         })
       )
@@ -643,11 +641,11 @@ export default function FollowersGraph() {
           .forceLink(links)
           .id((d) => d.id)
           .distance(function (link) {
-            return 300;
+            return 150;
           })
       )
       .force("charge", d3.forceManyBody());
-    // .force("center", d3.forceCenter(1100 / 2, HEIGHT / 2));
+    // .force("center", d3.forceCenter(1100 / 2, 600 / 2));
 
     const svg = d3.select(ref.current);
 
@@ -669,8 +667,6 @@ export default function FollowersGraph() {
       .data(nodes)
       .join("image")
       .attr("xlink:href", (d) => {
-        console.log(d);
-
         return d.avatarUrl;
       })
       .attr("x", -8)
@@ -718,8 +714,12 @@ export default function FollowersGraph() {
   }, []);
 
   return (
-    <section id="followers" style={{ height: "900px" }}>
-      <h1 className="section-header">Top Followers</h1>
+    <section
+      id="followers"
+      className="section-card"
+      style={{ height: `${HEIGHT}px` }}
+    >
+      <h1>Top Followers</h1>
       <svg ref={ref} height="100%" width="100%"></svg>
     </section>
   );

@@ -67,9 +67,9 @@ body {
   .user-charts {
     display: grid;
     grid-template-areas:
-      "userInfo userInfo userInfo "
-      "most-starred-card most-starred-card most-starred-card "
-      "top-languages-card top-languages-card top-languages-card";
+      "userInfo"
+      "most-starred-card"
+      "top-languages-card";
     grid-row-gap: 20px;
   }
 }

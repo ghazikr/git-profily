@@ -6,6 +6,7 @@ import TopLanguagesChart from "./charts/TopLanguagesChart";
 import MostStarredChart from "./charts/MosStarredChart";
 import UserRepos from "./TopRepos";
 import FollowersGraph from "./FollowersGraph";
+import { useParams, useLocation } from "react-router-dom";
 const userInfoMock = {
   login: "ghazikr",
   id: 33207077,
@@ -796,12 +797,18 @@ const reposData = [
   },
 ];
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 export default function UserProfile() {
-  const [username, setUsername] = useState("ghazikr");
+  const query = useQuery();
+  const username = query.get("login");
   const [userInfo, setUserInfo] = useState(userInfoMock);
   const [topLanguagesData, setTopLanguagesData] = useState([]);
   const [mostStarredReposData, setMostStarredReposData] = useState([]);
   const [repDataCards, setRepDataCards] = useState([]);
+
   const getUserInfo = () => {
     fetch(`https://api.github.com/users/${username}`)
       .then((response) => response.json())
@@ -867,6 +874,5 @@ export default function UserProfile() {
       <UserRepos data={repDataCards} />
       <FollowersGraph />
     </>
-    // <div className="user-friends"></div>
   );
 }

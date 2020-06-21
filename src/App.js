@@ -1,12 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
 import UserProfile from "./UserProfile";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./Home/Home";
 
-export default class App extends Component {
-  render() {
-    return (
-      <div id="container">
-        <UserProfile />
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <div id="container">
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path={`/user_profile`}>
+            <UserProfile />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
+  );
 }

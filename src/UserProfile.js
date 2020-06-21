@@ -42,7 +42,7 @@ const userInfoMock = {
   updated_at: "2020-02-21T00:33:05Z",
 };
 
-const reposData = [
+const mockedReposData = [
   {
     id: 110863028,
     node_id: "MDEwOlJlcG9zaXRvcnkxMTA4NjMwMjg=",
@@ -797,17 +797,21 @@ const reposData = [
   },
 ];
 
+const REP_DATA_COUNT = 10;
+const MOST_STARRED_COUNT = 5;
+
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
 export default function UserProfile() {
   const query = useQuery();
-  const username = query.get("login");
+  const username = query.get("name");
   const [userInfo, setUserInfo] = useState(userInfoMock);
   const [topLanguagesData, setTopLanguagesData] = useState([]);
   const [mostStarredReposData, setMostStarredReposData] = useState([]);
   const [repDataCards, setRepDataCards] = useState([]);
+  const [followersData, setFollowersData] = useState([]);
 
   const getUserInfo = () => {
     fetch(`https://api.github.com/users/${username}`)
@@ -821,58 +825,73 @@ export default function UserProfile() {
   const getRepoData = () => {
     fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
       .then((response) => response.json())
-      .then((data) => {})
+      .then((data) => {
+        const languagesArray = Array.from(
+          new Set(data.map((elem) => elem.language).filter((lang) => lang))
+        );
+        const userOrgiginalRepos = data.filter((repo) => repo.fork === false);
+        const languagesData = languagesArray
+          .map((lang) => ({
+            name: lang,
+            value: userOrgiginalRepos.filter(
+              ({ language }) => language === lang
+            ).length,
+          }))
+          .sort(sortDes);
+
+        setTopLanguagesData(languagesData);
+
+        const mostStarredRepos = userOrgiginalRepos
+          .filter((repo) => repo.stargazers_count > 0)
+          .map((repo) => ({
+            name: repo.full_name,
+            value: repo.stargazers_count,
+          }))
+          .sort(sortDes)
+          .slice(0, MOST_STARRED_COUNT);
+        setMostStarredReposData(mostStarredRepos);
+
+        const repData = userOrgiginalRepos
+          .map(({ name, stargazers_count, language, description }) => ({
+            name,
+            value: stargazers_count,
+            language,
+            description,
+          }))
+          .sort(sortDes)
+          .slice(0, REP_DATA_COUNT);
+        setRepDataCards(repData);
+      })
+      .catch((error) => {});
+  };
+  // https://api.github.com/users/ghazikr/followers
+
+  const getFollowersData = () => {
+    fetch(`https://api.github.com/users/${username}/followers`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+
+        setFollowersData(data);
+      })
       .catch((error) => {});
   };
 
   useEffect(() => {
-    // getUserInfo();
-    // getRepoData();
-    const languagesArray = Array.from(
-      new Set(reposData.map((elem) => elem.language).filter((lang) => lang))
-    );
-    const userOrgiginalRepos = reposData.filter((repo) => repo.fork === false);
-
-    const languagesCountObj = languagesArray.map((language) => {
-      const languageCountPerLang = userOrgiginalRepos.filter(
-        (repo) => repo.language === language
-      ).length;
-      return { name: language, value: languageCountPerLang };
-    });
-    const languagesData = languagesCountObj.sort(sortDes).map((elem) => ({
-      name: elem.name,
-      value: elem.value,
-    }));
-    setTopLanguagesData(languagesData);
-
-    const mostStarredRepos = userOrgiginalRepos
-      .filter((repo) => repo.stargazers_count > 0)
-      .map((repo) => ({ name: repo.full_name, value: repo.stargazers_count }))
-      .sort(sortDes)
-      .slice(0, 5);
-    setMostStarredReposData(mostStarredRepos);
-
-    const repData = userOrgiginalRepos
-      .map(({ name, stargazers_count, language, description }) => ({
-        name,
-        value: stargazers_count,
-        language,
-        description,
-      }))
-      .sort(sortDes)
-      .slice(0, 8);
-    setRepDataCards(repData);
+    getUserInfo();
+    getRepoData();
+    getFollowersData();
   }, []);
 
   return (
-    <>
+    <div id="container">
       <div className="user-charts">
         <UserInfo data={userInfo} />
         <MostStarredChart data={mostStarredReposData} />
         <TopLanguagesChart data={topLanguagesData} />
       </div>
       <UserRepos data={repDataCards} />
-      <FollowersGraph />
-    </>
+      <FollowersGraph data={followersData} username={username} />
+    </div>
   );
 }

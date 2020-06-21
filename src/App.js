@@ -5,17 +5,15 @@ import Home from "./Home/Home";
 
 export default function App() {
   return (
-    <div id="container">
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path={`/user_profile`}>
-            <UserProfile />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path={`/user_profile`}>
+          <UserProfile />
+        </Route>
+      </Switch>
+    </Router>
   );
 }

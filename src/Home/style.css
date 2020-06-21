@@ -3,4 +3,47 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: #43425d;
+}
+#home-container div h1 {
+  font-size: 2em;
+  color: #fff;
+  margin-bottom: 0.8em;
+}
+#home-container div p {
+  font-size: 1.2em;
+  color: #f03e3e;
+}
+#username-input {
+  height: 4em;
+  /* border-radius: 4em; */
+  border: 1px solid #cdd9ed;
+  border-radius: 0.3em;
+  padding: 8px 16px;
+  width: 100%;
+  font-size: 1.1em;
+  margin-bottom: 0.4em;
+}
+
+#username-input:focus {
+  outline: none;
+  border-color: #8c8b9c;
+}
+
+::placeholder {
+  color: #cbd1dc;
+  font-size: 1.2em;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #cbd1dc;
+  font-size: 1.2em;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #cbd1dc;
+  font-size: 1.2em;
 }

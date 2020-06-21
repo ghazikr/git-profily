@@ -71,7 +71,7 @@ export default function UserInfo({ data }) {
       <div className="stats-footer">
         <div className="stat-box">
           <FontAwesomeIcon icon={faBriefcase} color={FOOTER_ICON_COLOR} />
-          <span className="label-stat-box">@{data.company}</span>
+          <span className="label-stat-box">{data.company}</span>
         </div>
         <div className="stat-box">
           <FontAwesomeIcon icon={faMapMarkedAlt} color={FOOTER_ICON_COLOR} />

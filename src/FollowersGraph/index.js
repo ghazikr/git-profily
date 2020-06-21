@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 
-const data = [
+const mockedData = [
   {
     login: "likai3615560",
     id: 3921044,
@@ -577,8 +577,8 @@ const data = [
   },
 ];
 
-export default function FollowersGraph() {
-  const username = "Napolean";
+export default function FollowersGraph({ data, username }) {
+  // const username = "Napolean";
   const HEIGHT = 700;
   const BASIC_R = 40;
 
